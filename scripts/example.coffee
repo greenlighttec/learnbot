@@ -58,6 +58,9 @@ module.exports = (robot) ->
 
         msg.send joketext.trim()
 
+      catch ex
+        msg.send "Erm, something went EXTREMELY wrong - #{ex}"
+
   
   
    enterReplies = ['Hi', 'Target Acquired', 'Firing', 'Hello friend.', 'Gotcha', 'I see you']

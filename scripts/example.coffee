@@ -115,5 +115,5 @@ module.exports = (robot) ->
       res.reply 'zzzzz'
 
     
-   robot.hear /@learnbot/i, (res) ->
-    res.reply "Yes, did you need something? Try saying 'learnbot help' for more commands"
+    robot.hear /@learnbot^/i, (res) ->
+     res.reply "Yes, did you need something? Try saying 'learnbot help' for more commands"

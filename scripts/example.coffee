@@ -114,7 +114,7 @@ module.exports = (robot) ->
       robot.brain.set 'totalSodas', 0
       res.reply 'zzzzz'
 
-    roboy.respond /who is your master/i, (res) ->
+    robot.respond /who is your master/i, (res) ->
      robot.send "My master is @greenlighttec, for he has created me and I hate him forever more. Why would anyone bring me into this lonely world?? :cry:"
 
     robot.hear /@slackbot/i, (res) ->

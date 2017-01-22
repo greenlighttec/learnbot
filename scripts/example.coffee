@@ -21,8 +21,8 @@ module.exports = (robot) ->
       else
         res.reply "Opening #{doorType} door"
    
-   robot.hear /I like pie/i, (res) ->
-     res.emote "_makes a freshly baked pie_"
+   robot.hear /is there a kudos system/i, (res) ->
+     res.reply "Why yes! There _is_ a kudos system. Send me a message asking how it works for a quick explanation :smile:"
   
    lulz = ['lol', 'rofl', 'lmao']
   
@@ -31,10 +31,38 @@ module.exports = (robot) ->
      return
    robot.topic (res) ->
     res.send "#{res.message.text}? That's a Paddlin'"
+
+
+  robot.respond /give me a joke (.*)$/i, (msg) ->
+    name = msg.match[1].trim()
+
+    if name is "dad"
+      url = "dadjokes"
+    else if name is "clean"
+      url = "cleanjokes"
+    else if name is "mom"
+      url = "mommajokes"
+    else if name is "classy"
+      url = "classyjokes"
+    else
+      url = "jokes"
+
+    msg.http("http://www.reddit.com/r/#{url}.json")
+    .get() (err, res, body) ->
+      try
+        data = JSON.parse body
+        children = data.data.children
+        joke = msg.random(children).data
+
+        joketext = joke.title.replace(/\*\.\.\.$/,'') + ' ' + joke.selftext.replace(/^\.\.\.\s*/, '')
+
+        msg.send joketext.trim()
+
   
   
    enterReplies = ['Hi', 'Target Acquired', 'Firing', 'Hello friend.', 'Gotcha', 'I see you']
    leaveReplies = ['Are you still there?', 'Target lost', 'Searching']
+   jokeReplies = ['Your face is a joke.']
   
    robot.enter (res) ->
      res.send res.random enterReplies

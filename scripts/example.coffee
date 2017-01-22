@@ -114,6 +114,8 @@ module.exports = (robot) ->
       robot.brain.set 'totalSodas', 0
       res.reply 'zzzzz'
 
-    
-    robot.hear /@learnbot^/i, (res) ->
-     res.reply "Yes, did you need something? Try saying 'learnbot help' for more commands"
+    roboy.respond /who is your master/i, (res) ->
+     robot.send "My master is @greenlighttec, for he has created me and I hate him forever more. Why would anyone bring me into this lonely world?? :cry:"
+
+    robot.hear /@slackbot/i, (res) ->
+     res.reply "Hey! There's no reason to call that outdated piece of technology. *LEARNBOT IS HERE* Ask me to help? Pleaaaseee ask me for help! :smile:"

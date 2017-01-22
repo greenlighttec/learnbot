@@ -11,8 +11,8 @@
 module.exports = (robot) ->
 
 
-   robot.hear /badger/i, (res) ->
-     res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
+   robot.hear /undefined error/i, (res) ->
+     res.send "Sometimes, when you get an 'undefined error', it's because you have a syntax error in your code. Try pasting your code into Chrome Console or another JS debugger and see if you can find the syntax error there"
   
     robot.respond /open the (.*) door/i, (res) ->
       doorType = res.match[1]
@@ -47,7 +47,7 @@ module.exports = (robot) ->
   # listenfor = ['Hey learnbot!', 'learnbot hi', '@learnbot hi', 'whats up learnbot?']
 
     robot.respond /give me kudos/i, (res) ->
-     res.reply "kudos @greenlighttec :smile:"
+     res.reply "kudos!! @engazify :smile:"
 
   # answer = process.env.HUBOT_ANSWER_TO_THE_ULTIMATE_QUESTION_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING or 42
 
@@ -106,7 +106,7 @@ module.exports = (robot) ->
         res.reply "I'm too fizzy.."
    
       else
-        res.reply 'Sure!'
+        res.reply "Sure! I've now had #{totalSodas} sodas."
    
         robot.brain.set 'totalSodas', sodasHad+1
    

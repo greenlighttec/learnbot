@@ -30,29 +30,7 @@ module.exports = (robot) ->
      res.send res.random lulz
      return
    robot.topic (res) ->
-    res.send "#{res.message.text}? That's a Paddlin'"
-
-
-  robot.respond /give me a joke (.*)$/i, (msg) ->
-    name = msg.match[1].trim()
-
-      url = "jokes"
-
-    msg.http("http://www.reddit.com/r/#{url}.json")
-    .get() (err, res, body) ->
-      try
-        data = JSON.parse body
-        children = data.data.children
-        joke = msg.random(children).data
-
-        joketext = joke.title.replace(/\*\.\.\.$/,'') + ' ' + joke.selftext.replace(/^\.\.\.\s*/, '')
-
-        msg.send joketext.trim()
-
-      catch ex
-        msg.send "Erm, something went EXTREMELY wrong - #{ex}"
-
-  
+    res.send "#{res.message.text}? That's a Paddlin'"  
   
    enterReplies = ['Hi', 'Target Acquired', 'Firing', 'Hello friend.', 'Gotcha', 'I see you']
    leaveReplies = ['Are you still there?', 'Target lost', 'Searching']
@@ -84,7 +62,7 @@ module.exports = (robot) ->
         res.send "Who you calling 'slow'?"
       , 60 * 1000
    
-    annoyIntervalId = null
+    annoyIntervalId = null;
    
     robot.respond /annoy me/, (res) ->
       if annoyIntervalId

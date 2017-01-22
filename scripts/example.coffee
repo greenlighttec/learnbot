@@ -33,18 +33,9 @@ module.exports = (robot) ->
     res.send "#{res.message.text}? That's a Paddlin'"
 
 
-  ###robot.respond /give me a joke (.*)$/i, (msg) ->
+  robot.respond /give me a joke (.*)$/i, (msg) ->
     name = msg.match[1].trim()
 
-    if name is "dad"
-      url = "dadjokes"
-    else if name is "clean"
-      url = "cleanjokes"
-    else if name is "mom"
-      url = "mommajokes"
-    else if name is "classy"
-      url = "classyjokes"
-    else
       url = "jokes"
 
     msg.http("http://www.reddit.com/r/#{url}.json")
@@ -59,7 +50,7 @@ module.exports = (robot) ->
         msg.send joketext.trim()
 
       catch ex
-        msg.send "Erm, something went EXTREMELY wrong - #{ex}"###
+        msg.send "Erm, something went EXTREMELY wrong - #{ex}"
 
   
   

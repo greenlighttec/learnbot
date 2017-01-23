@@ -17,7 +17,7 @@ module.exports = (robot) ->
    robot.hear /reference error/i, (res) ->
      res.send "Sometimes, when you get a 'reference error', it's because you have a syntax error in your code. Try pasting your code into Chrome Console or another JS debugger and see if you can find the syntax error there. Some people find it helpful to use comments to block out functions so they can use process of elimination to identify where the error is."
      
-   robot.hear /is there a kudos system/i, (res) ->
+   robot.hear /kudos system/i, (res) ->
      res.reply "Why yes! There _is_ a kudos system. Send me a message asking how it works for a quick explanation :smile:"
   
    lulz = ['lol', 'rofl', 'lmao']
@@ -35,10 +35,10 @@ module.exports = (robot) ->
    robot.leave (res) ->
      res.send res.random leaveReplies
 
-    robot.respond /kudos/i, (res) ->
+    robot.respond /(.*) kudos*/i, (res) ->
      res.send "@engazify is our kudos bot! Just say *kudos @username* to people who help you out or who deserve particular recognition! Say *@engazify praises* for more ways to give thanks!"
  
-    robot.respond /code snippet/i, (res) ->
+    robot.respond /(.*) code snippet/i, (res) ->
      res.reply "Uploading a code snippet is easy! Use the `+` next to the chat box in slack, and choose *'Code Snippet'* , on the top right make sure you choose the appropriate language for color formmatting :slightly_smiling_face: *Note:* While not strictly related to code-snippets, you can drag and drop any file -if its code then it will be displayed as a snippet in the automatically detected language. Pictures, Documents, Applications can all be shared that way as well."
 
 
@@ -54,6 +54,10 @@ module.exports = (robot) ->
       # res.send "Missing HUBOT_ANSWER_TO_THE_ULTIMATE_QUESTION_OF_LIFE_THE_UNIVERSE_AND_EVERYTHING in environment: please set and try again"
       #return
      res.send "42, but what is the question?"
+
+    robot.hear /i like pie/i, (res) ->
+     res.emote "_makes a pie_"
+
    
     robot.respond /you are a little slow/, (res) ->
       setTimeout () ->
@@ -104,7 +108,7 @@ module.exports = (robot) ->
         res.reply "I'm too fizzy.."
    
       else
-        res.reply "Sure! I've now had #{totalSodas} sodas."
+        res.reply "Sure! I've now had " + totalSodas +" sodsas."
    
         robot.brain.set 'totalSodas', sodasHad+1
    

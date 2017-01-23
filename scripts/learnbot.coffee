@@ -16,7 +16,10 @@ module.exports = (robot) ->
      
    robot.hear /reference error/i, (res) ->
      res.send "Sometimes, when you get a 'reference error', it's because you have a syntax error in your code. Try pasting your code into Chrome Console or another JS debugger and see if you can find the syntax error there. Some people find it helpful to use comments to block out functions so they can use process of elimination to identify where the error is."
-     
+   
+   robot.respond /(.*) introduce yourself/i, (res) ->
+    res.send "Hellllloo everyone! I am *LEARNBOT*. I'll be keeping an ear out for those of you with common issues and point out possible solutions. You can also ask me for useful information like a good online JS compiler for decent debugging. I'll be learning as I go so don't be afraid to ask me for tips -just don't get offended if I appear to ignore you; I just haven't learned to respond to that question yet :wink: Happy Coding! :smile:"
+
    robot.hear /kudos system/i, (res) ->
      res.reply "Why yes! There _is_ a kudos system. Send me a message asking how it works for a quick explanation :smile:"
   
@@ -120,4 +123,4 @@ module.exports = (robot) ->
      res.send "My master is @greenlighttec, for he has created me and I hate him forever more. Why would anyone bring me into this lonely world?? :cry:"
 
     robot.hear /@slackbot/i, (res) ->
-     res.reply "Hey! There's no reason to call that outdated piece of technology. *LEARNBOT IS HERE* :ninja:"
+     res.reply "Hey! There's no reason to call that outdated piece of technology. *LEARNBOT IS HERE* :ninja: Ask me to introduce myself :wink:"

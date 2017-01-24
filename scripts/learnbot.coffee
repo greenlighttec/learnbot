@@ -30,8 +30,10 @@ module.exports = (robot) ->
    leaveReplies = ['Aww why did he leave? :frowning:', 'Nothing will ever be the same again :crying:', 'Who is resopnsible for this travesty!? :angry:']
   
    robot.enter (res) ->
+    if res.message.room = "C3RSKA005"
      res.reply res.random enterReplies
    robot.leave (res) ->
+    if res.message.room = "C3RSKA005"
      res.send res.random leaveReplies
 
     robot.respond /hello/i, (res) ->

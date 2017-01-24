@@ -10,6 +10,8 @@
 
 module.exports = (robot) ->
 
+   robot.hear /mocha test in a browser|browser test mocha/i, (res) ->
+     res.send "Mocha testing from within a browser is doable! Check out this link for front-end diagnostics: https://nicolas.perriault.net/code/2013/testing-frontend-javascript-code-using-mocha-chai-and-sinon/"
 
    robot.hear /(undefined|reference) error/i, (res) ->
     if res.message.room is "C3R416QKB"

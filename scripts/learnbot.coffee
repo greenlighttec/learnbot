@@ -36,9 +36,6 @@ module.exports = (robot) ->
     if res.message.room = "C3RSKA005"
      res.send res.random leaveReplies
 
-    robot.respond /hello/i, (res) ->
-     res.reply res.random enterReplies
-
     robot.respond /(.*) kudos*/i, (res) ->
      res.send "@engazify is our kudos bot! Just say *kudos @username* to people who help you out or who deserve particular recognition! Say *@engazify praises* for more ways to give thanks!"
  
@@ -62,6 +59,9 @@ module.exports = (robot) ->
      if res.message.room = "G3U4C75SQ"
       res.emote "_makes a pie_"
 
+    robot.respond /(version (.*) (running|on))|about/i, (res) ->
+     if res.message.room = "G3U4C75SQ"
+       res.reply "I am on Learnbot Version 0.07"
    
     robot.respond /you are a little slow/, (res) ->
       setTimeout () ->

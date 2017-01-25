@@ -30,10 +30,10 @@ module.exports = (robot) ->
    leaveReplies = ['Aww why did he leave? :frowning:', 'Nothing will ever be the same again :crying:', 'Who is resopnsible for this travesty!? :angry:']
   
    robot.enter (res) ->
-    if res.message.room = "C3RSKA005"
+    if res.message.room is "C3RSKA005"
      res.reply res.random enterReplies
    robot.leave (res) ->
-    if res.message.room = "C3RSKA005"
+    if res.message.room is "C3RSKA005"
      res.send res.random leaveReplies
 
     robot.respond /(.*) kudos*/i, (res) ->
@@ -61,7 +61,7 @@ module.exports = (robot) ->
 
     robot.respond /(version (.*) (running|on))|about/i, (res) ->
      if res.message.room = "G3U4C75SQ"
-       res.reply "I am on Learnbot Version 0.07"
+       res.reply "I am on Learnbot Version 0.08"
    
     robot.respond /you are a little slow/, (res) ->
       setTimeout () ->

@@ -54,7 +54,7 @@ module.exports = (robot) ->
 
     robot.respond /(?:version .*(?:running|on))|about/i, (res) ->
      if res.message.room in randomRooms
-       res.reply "I am on Learnbot Version 0.10"
+       res.reply "I am on Learnbot Version 0.10.1"
 
    robot.respond /(?:.*) kudos*/i, (res) ->
     res.send "@engazify is our kudos bot! Just say *kudos @username* to people who help you out or who deserve particular recognition! Say *@engazify praises* for more ways to give thanks!"
@@ -63,7 +63,7 @@ module.exports = (robot) ->
     res.reply "Uploading a code snippet is easy! Use the `+` next to the chat box in slack, and choose *'Code Snippet'* , on the top right make sure you choose the appropriate language for color formmatting :slightly_smiling_face: *Note:* While not strictly related to code-snippets, you can drag and drop any file -if its code then it will be displayed as a snippet in the automatically detected language. Pictures, Documents, Applications can all be shared that way as well."
 
    robot.hear /(?:hello|hi|hey|yo|whats up) learnbot|learnbot (?:hello|hi|hey|yo|whats up)/i, (res) ->
-     res.reply enterReplies
+     res.reply res.random enterReplies
 
    robot.hear /@slackbot/i, (res) ->
      if res.message.room in randomRooms

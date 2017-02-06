@@ -92,7 +92,7 @@ module.exports = (robot) ->
 
     robot.respond /(?:version .*(?:running|on))|about/i, (res) ->
      if res.message.room in randomRooms
-       res.reply "I am on Learnbot Version 0.11.2"
+       res.reply "I am on Learnbot Beta Version 0.11.3"
 
    robot.respond /(?:.*) kudos*/i, (res) ->
     res.send "@engazify is our kudos bot! Just say *kudos @username* to people who help you out or who deserve particular recognition! Say *@engazify praises* for more ways to give thanks!"

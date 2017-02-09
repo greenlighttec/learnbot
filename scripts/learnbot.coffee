@@ -34,7 +34,7 @@ module.exports = (robot) ->
      #res.reply replyTo;
 
    robot.respond /debug/i, (res) ->
-      res.send "```#{res.message.data}```"
+      res.send "```#{res.data}```"
 
    robot.respond /who are you|whats your name/i, (res) ->
      res.reply "#{res.random beginGreetings} My name is #{myName}. Nice to meet you!"
@@ -59,8 +59,16 @@ module.exports = (robot) ->
     res.send "Hello #{userName}, you are in #{curRoom}."
    
    robot.respond /(.*) introduce yourself/i, (res) ->
-    res.send "Hellllloo everyone! I am *#{myName.toUpperCase()}*. I'll be keeping an ear out for those of you with common issues and point out possible solutions. You can also ask me for useful information like a good online JS compiler for decent debugging. I'll be learning as I go so don't be afraid to ask me for tips -just don't get offended if I appear to ignore you; I just haven't learned to respond to that question yet :wink: Happy Coding! :smile:"
-  
+    respondMessage = "I am *#{myName.toUpperCase()}*. I'll be keeping an ear out for those of you with common issues and point out possible solutions. You can also ask me for useful information like a good online JS compiler for decent debugging. I'll be learning as I go so don't be afraid to ask me for tips -just don't get offended if I appear to ignore you; I just haven't learned to respond to that question yet :wink: Happy Coding! :smile:"
+    if replyTo is ''
+       respondMessage = "Hellloooo everyone! #{respondMessage}
+    else
+       respondMessage = "#{res.random beginGreetings} #{replyTo} #{respondMessage}
+       replyTo = ''
+    res.send respondMessage
+
+
+
    robot.respond /lulz|lol|haha|lmao|rofl|lmfao/i, (res) ->
      res.send res.random lolReplies
      return
@@ -90,7 +98,7 @@ module.exports = (robot) ->
       if res.message.room in randomRooms
         res.reply "Love it! Except leg day. Fuck leg day!"
 
-    robot.respond /(?:version .*(?:running|on))|about/i, (res) ->
+    robot.respond /(?:version .*(?:running|on))|about/gi, (res) ->
      if res.message.room in randomRooms
        res.reply "I am on Learnbot Version 0.11.2"
 
@@ -100,7 +108,7 @@ module.exports = (robot) ->
    robot.respond /(?:.*) code snippet/i, (res) ->
     res.reply "Uploading a code snippet is easy! Use the `+` next to the chat box in slack, and choose *'Code Snippet'* , on the top right make sure you choose the appropriate language for color formatting :slightly_smiling_face: \n\n *Note:* While not strictly related to code-snippets, you can drag and drop any file -if its code then it will be displayed as a snippet in the automatically detected language. Pictures, Documents, Applications can all be shared that way as well."
 
-   robot.hear /(?:hello|hi|hey|yo|whats up) learnbot | learnbot (?:hello|hi|hey|yo|whats up)/i, (res) ->
+   robot.hear /(?:(?:hello|hi|hey|yo|whats up) learnbot)|(?:learnbot (?:hello|hi|hey|yo|whats up))/i, (res) ->
      res.reply res.random enterReplies
 
    robot.hear /@slackbot/i, (res) ->

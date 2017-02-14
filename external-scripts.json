@@ -8,5 +8,6 @@
   "hubot-rules",
   "hubot-shipit",
   "hubot-search",
-  "hubot-google-images"
+  "hubot-google-images",
+  "hubot-ectorx"
 ]

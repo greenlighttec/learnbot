@@ -5,6 +5,7 @@
   "author": "Mendy <mgreen@intellicomp.net>",
   "description": "A helpful learning bot",
   "dependencies": {
+    "cheerio": "^0.22.0",
     "flip": "^1.0.0",
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",

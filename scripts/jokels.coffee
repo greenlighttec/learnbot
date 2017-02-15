@@ -12,6 +12,7 @@
 
 module.exports = (robot) ->
   robot.respond /(jokel|jokels|joke)/i, (msg) ->
+   if msg.message.user.room is 'C41PCG9F1'
     msg.http('http://jokels.com/random_joke').get() (err, res, body) ->
       joke = JSON.parse(body).joke
       vote = joke.up_votes - joke.down_votes
@@ -19,6 +20,6 @@ module.exports = (robot) ->
       setTimeout ->
         msg.send "#{ joke.answer }" 
         setTimeout ->
-          msg.send "#{ vote } upvotes - #{ joke.bitly_url }"
+          msg.send ":laughing:"
         , 1000
        , 4000

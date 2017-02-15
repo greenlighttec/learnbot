@@ -1,0 +1,1 @@
+{"node":{"1":{"id":1,"label":"sSalut.","occ":1},"2":{"id":2,"label":"wSalut.","occ":1,"beg":1,"end":1}},"link":{"1_2":{"fromId":1,"toId":2,"coOcc":1}},"nodeLastId":2,"labelIndex":{"sSalut.":1,"wSalut.":2},"fromIndex":{"1":["1_2"]},"toIndex":{"2":["1_2"]}}

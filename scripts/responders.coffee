@@ -94,6 +94,7 @@ module.exports = (robot) ->
       msg.send("I wasn't responding to /#{pattern}/ anyway.")
 
   robot.respond /respond \/(.+)\/ ([^]+)/i, (msg) ->
+   if msg.message.user.name is 'greenlighttec'
     pattern = msg.match[1]
     callback = msg.match[2]
     responder = responders.add(pattern, callback)
@@ -101,3 +102,5 @@ module.exports = (robot) ->
       msg.send("I'll start responding to /#{pattern}/.")
     else
       msg.send("I'd like to respond to /#{pattern}/ but something went wrong.")
+   else
+    msg.send("I've been forbidden from listening to you #{msg.message.user.name}.")

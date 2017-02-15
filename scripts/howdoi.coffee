@@ -21,7 +21,7 @@ module.exports = (robot) ->
         search = message.match[2]
         
         options = {
-            'uri': "https://www.google.com/search?q=site:stackoverflow.com%20#{search}",
+            'uri': "https://www.google.com/search?q=#{search}%20site:stackoverflow.com",
             'headers': {
                 'Accept-Language': 'en-us,en;q=0.5',
                 'Accept-Charset': 'utf-8',

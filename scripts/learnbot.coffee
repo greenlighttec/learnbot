@@ -12,8 +12,8 @@ module.exports = (robot) ->
    
    javaRooms = ['C3R416QKB','C3SFE39M5', 'G3U4C75SQ']
    rubyRooms = ['C3SR3DRMM', 'C3RNH5LKD', 'G3U4C75SQ','C41PCG9F1']
-   randomRooms = ['C3RSKA005', 'G3U4C75SQ','C41PCG9F1']
-   testRooms = ['G3U4C75SQ','C41PCG9F1']
+   randomRooms = ['C3RSKA005', 'G3U4C75SQ','C41PCG9F1','C62RRUBB4']
+   testRooms = ['G3U4C75SQ','C41PCG9F1','C62RRUBB4']
    myName = robot.name
    lolReplies = ['lol', 'rofl', 'lmao', 'haha']
    beginGreetings = ['Hello','Hi there','Yo!','Sup?','Hey!']
@@ -23,10 +23,10 @@ module.exports = (robot) ->
     (message) ->
       message.text is "I'm sooo lost"
     (response) ->
-      response.reply "I can help! You are #{response.message.user.name} in the LearnSlackers slack team! Specifically in the #{response.message.user.room} channel"
+      response.reply "I can help! You are #{response.message.user.name} in the LabTechGeek slack team! Specifically in the #{response.message.user.room} channel"
    )
 
-   enterReplies = ['Hey there! Welcome to the Slack Team for learners! :slightly_smiling_face: Ask me about the kudos system or uploading a code snippet!', 'Woot! Woot! More fresh blood! Thanks for joining slack :slightly_smiling_face: Let me know if you want to hear about the kudos system or how to upload a code snippet!', 'Welcome! :smile: Do you know about our kudos system or how to upload a code snippet? Ask me for some quick information!']
+   enterReplies = ['Hey there! Welcome to the Slack Team for LabTechGeek! :slightly_smiling_face: Ask me about the kudos system or uploading a code snippet!', 'Woot! Woot! More fresh blood! Thanks for joining slack :slightly_smiling_face: Let me know if you want to hear about the kudos system or how to upload a code snippet!', 'Welcome! :smile: Do you know about our kudos system or how to upload a code snippet? Ask me for some quick information!']
    leaveReplies = ['Aww why did he leave? :frowning:', 'Nothing will ever be the same again :cry:', 'Who is responsible for this travesty!? :angry:']
 
    robot.hear /\W(@\w+\b)(?:.*)/i, (res) ->
@@ -78,10 +78,10 @@ module.exports = (robot) ->
         res.reply "I'm here to help out and learn just like you :wink:"
    
    robot.enter (res) ->
-     if res.message.room is "C3RSKA005"
+     if res.message.room is "C62RRUBB4"
         res.reply res.random enterReplies
    robot.leave (res) ->
-     if res.message.room is "C3RSKA005"
+     if res.message.room is "C62RRUBB4"
         res.send res.random leaveReplies
 
    robot.respond /(.*)spam/i, (res) ->
@@ -100,7 +100,7 @@ module.exports = (robot) ->
 
     robot.respond /(?:version .*(?:running|on))|about/gi, (res) ->
      if res.message.room in randomRooms
-       res.reply "I am on Learnbot Version 0.15.6"
+       res.reply "I am on Johnny5 Version 0.0.4"
 
    robot.respond /(?:.*) kudos*/i, (res) ->
     res.send "@engazify is our kudos bot! Just say *kudos @username* to people who help you out or who deserve particular recognition! Say *@engazify praises* for more ways to give thanks!"
@@ -108,7 +108,7 @@ module.exports = (robot) ->
    robot.respond /(?:.*) code snippet/i, (res) ->
     res.reply "Uploading a code snippet is easy! Use the `+` next to the chat box in slack, and choose *'Code Snippet'* , on the top right make sure you choose the appropriate language for color formatting :slightly_smiling_face: \n\n *Note:* While not strictly related to code-snippets, you can drag and drop any file -if its code then it will be displayed as a snippet in the automatically detected language. Pictures, Documents, Applications can all be shared that way as well."
 
-   robot.hear /(?:(?:hello|hi|hey|whats up) learnbot)|(?:learnbot (?:hello|hi|hey|whats up))/i, (res) ->
+   robot.hear /(?:(?:hello|hi|hey|whats up) johnny5)|(?:johnny5 (?:hello|hi|hey|whats up))/i, (res) ->
      res.reply res.random enterReplies
 
    robot.hear /@slackbot/i, (res) ->

@@ -94,7 +94,7 @@ module.exports = (robot) ->
       msg.send("I wasn't responding to /#{pattern}/ anyway.")
 
   robot.respond /respond \/(.+)\/ ([^]+)/i, (msg) ->
-   if msg.message.user.name is 'greenlighttec'
+   if msg.message.user.name is 'mgreen.intellicomp'
     pattern = msg.match[1]
     callback = msg.match[2]
     responder = responders.add(pattern, callback)

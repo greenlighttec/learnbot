@@ -28,7 +28,7 @@ module.exports = (robot) ->
     if users.length is 1
       user = users[0]
       appendAmbush(robot.brain.data.ambushes, user, msg.message.user, msg.match[2])
-      msg.send "Ambush prepared"
+      msg.send "Ambush prepared :grinning:"
     else if users.length > 1
       msg.send "Too many users like that"
     else
@@ -38,5 +38,5 @@ module.exports = (robot) ->
     return unless robot.brain.data.ambushes?
     if (ambushes = robot.brain.data.ambushes[msg.message.user.name])
       for ambush in ambushes
-        msg.send msg.message.user.name + " " + ambush[1]
+        msg.send ambush[1]
       delete robot.brain.data.ambushes[msg.message.user.name]

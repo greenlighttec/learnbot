@@ -12,8 +12,8 @@ module.exports = (robot) ->
    
    javaRooms = ['C3R416QKB','C3SFE39M5', 'G3U4C75SQ']
    rubyRooms = ['C3SR3DRMM', 'C3RNH5LKD', 'G3U4C75SQ','C41PCG9F1']
-   randomRooms = ['C3RSKA005', 'G3U4C75SQ','C41PCG9F1','C62RRUBB4']
-   testRooms = ['G3U4C75SQ','C41PCG9F1','C62RRUBB4']
+   randomRooms = ['C3RSKA005', 'G3U4C75SQ','C41PCG9F1','C62RRUBB4','C65BCNMB3']
+   testRooms = ['G3U4C75SQ','C41PCG9F1','C62RRUBB4','C65BCNMB3']
    myName = robot.name
    lolReplies = ['lol', 'rofl', 'lmao', 'haha']
    beginGreetings = ['Hello','Hi there','Yo!','Sup?','Hey!']

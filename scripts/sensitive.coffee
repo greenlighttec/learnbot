@@ -20,7 +20,7 @@ messages = [
   "Sticks and stones cannot pierce my anodized exterior, but words *do* hurt me."
   "I'm sorry, I'll try to do better next time."
   "Are you looking to start something?"
-  "/kick @mgreen.intellicomp"
+  "please /kick him, @mgreen.intellicomp :cry:"
 ]
 
 hurt_feelings = (msg) ->

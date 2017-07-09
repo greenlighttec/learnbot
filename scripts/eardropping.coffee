@@ -51,16 +51,16 @@ module.exports = (robot) ->
         earDropping.add(key, task_split[0])
       else
         earDropping.add(key, task_split[1], task_split[0])
-    msg.send "I am now ear dropping for #{key}. Hehe."
+    msg.send "I am now ear dropping for #{key}. :party_gandalf:"
 
   robot.respond /stop ear *dropping$/i, (msg) ->
     earDropping.deleteAll()
-    msg.send 'Okay, fine. :( I will keep my ears shut.'
+    msg.send 'Okay, fine. :slightly_frowning_face: I will keep my ears shut.'
 
   robot.respond /stop ear *dropping (for|on) (.+?)$/i, (msg) ->
     pattern = msg.match[2]
     earDropping.deleteByPattern(pattern)
-    msg.send "Okay, I will ignore #{pattern}"
+    msg.send "Okay, I will ignore #{pattern} :bandit:"
 
   robot.respond /show ear *dropping/i, (msg) ->
     response = "\n"

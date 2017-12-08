@@ -40,24 +40,32 @@ class EarDropping
     @robot.brain.data.eardropping = @cache
 
 module.exports = (robot) ->
+  adminRooms = ['G262PSWTT']
+  strictRooms = ['C65BCNMB3', 'G658U2NTF']
+  randomRooms = ['G658U2NTF', 'C65BCNMB3']
+  testRooms = ['G658U2NTF', 'C65BCNMB3']
+  myName = robot.name
   earDropping = new EarDropping robot
 
   robot.respond /when you hear (.+?) do (.+?)$/i, (msg) ->
-    key = msg.match[1]
-    for task_raw in msg.match[2].split ";"
-      task_split = task_raw.split "|"
-      # If it's a single task, don't add an "order" property
-      if not task_split[1]
-        earDropping.add(key, task_split[0])
-      else
-        earDropping.add(key, task_split[1], task_split[0])
-    msg.send "I am now ear dropping for #{key}. :party_gandalf:"
+   if msg.message.room in adminRooms
+     key = msg.match[1]
+     for task_raw in msg.match[2].split ";"
+       task_split = task_raw.split "|"
+       # If it's a single task, don't add an "order" property
+       if not task_split[1]
+         earDropping.add(key, task_split[0])
+       else
+         earDropping.add(key, task_split[1], task_split[0])
+     msg.send "I am now ear dropping for #{key}. :party_gandalf:"
 
   robot.respond /stop ear *dropping$/i, (msg) ->
+   if msg.message.room in adminRooms
     earDropping.deleteAll()
     msg.send 'Okay, fine. :slightly_frowning_face: I will keep my ears shut.'
 
   robot.respond /stop ear *dropping (for|on) (.+?)$/i, (msg) ->
+   if msg.message.room in adminRooms
     pattern = msg.match[2]
     earDropping.deleteByPattern(pattern)
     msg.send "Okay, I will ignore #{pattern} :bandit:"

@@ -10,10 +10,10 @@
 
 module.exports = (robot) ->
    
-   javaRooms = ['C3R416QKB','C3SFE39M5', 'G3U4C75SQ']
-   rubyRooms = ['C3SR3DRMM', 'C3RNH5LKD', 'G3U4C75SQ','C41PCG9F1']
+   adminRooms = ['G262PSWTT']
+   strictRooms = ['C3SR3DRMM', 'C3RNH5LKD', 'G3U4C75SQ','C41PCG9F1']
    randomRooms = ['C3RSKA005', 'G3U4C75SQ','C41PCG9F1','C62RRUBB4','C65BCNMB3']
-   testRooms = ['G3U4C75SQ','C41PCG9F1','C62RRUBB4','C65BCNMB3']
+   testRooms = ['G658U2NTF']
    myName = robot.name
    lolReplies = ['lol', 'rofl', 'lmao', 'haha']
    beginGreetings = ['Hello','Hi there','Yo!','Sup?','Hey!']
@@ -37,6 +37,7 @@ module.exports = (robot) ->
       res.send "```#{res.data}```"
 
    robot.respond /who are you|whats your name/i, (res) ->
+    if res.message.room in testRooms
      res.reply "#{res.random beginGreetings} My name is #{myName}. Nice to meet you!"
 
    robot.hear /(undefined|reference) error/i, (res) ->
@@ -67,6 +68,7 @@ module.exports = (robot) ->
 
 
    robot.respond /lulz|lol|haha|lmao|rofl|lmfao/i, (res) ->
+    if res.message.room in testRooms
      res.send res.random lolReplies
      return
 
@@ -75,10 +77,10 @@ module.exports = (robot) ->
         res.reply "I'm here to help out and learn just like you :wink:"
    
    robot.enter (res) ->
-     if res.message.room is "C62RRUBB4"
+     if res.message.room in testRooms
         res.reply res.random enterReplies
    robot.leave (res) ->
-     if res.message.room is "C62RRUBB4"
+     if res.message.room in testRooms
         res.send res.random leaveReplies
 
    robot.respond /(.*)spam/i, (res) ->
@@ -97,7 +99,7 @@ module.exports = (robot) ->
 
     robot.respond /(?:version .*(?:running|on))|about/gi, (res) ->
      if res.message.room in randomRooms
-       res.reply "I am on Johnny5 Version 0.1.2"
+       res.reply "I am on Geekbot Version 0.0.1"
 
    robot.respond /(?:.*) kudos*/i, (res) ->
     res.send "LabtechGeek does not currenlty have a kudod system :slightly_frowning_face:. Go bug @martynkeigher to make one! :party_gandalf:"
@@ -105,11 +107,11 @@ module.exports = (robot) ->
    robot.respond /(?:.*) code snippet/i, (res) ->
     res.reply "Uploading a code snippet is easy! Use the `+` next to the chat box in slack, and choose *'Code Snippet'* , on the top right make sure you choose the appropriate language for color formatting :slightly_smiling_face: \n\n *Note:* While not strictly related to code-snippets, you can drag and drop any file -if its code then it will be displayed as a snippet in the automatically detected language. Pictures, Documents, Applications can all be shared that way as well."
 
-   robot.hear /(?:(?:hello|hi|hey|whats up) johnny5)|(?:johnny5 (?:hello|hi|hey|whats up))/i, (res) ->
+   robot.hear /(?:(?:hello|hi|hey|whats up) geekbot)|(?:geekbot (?:hello|hi|hey|whats up))/i, (res) ->
      res.reply res.random enterReplies
 
    robot.hear /@slackbot/i, (res) ->
-     if res.message.room in randomRooms
+     if res.message.room in testRooms
       res.reply "Hey! There's no reason to call that outdated piece of technology. *#{myName.toUpperCase()} IS HERE* :ninja: \n Ask me to introduce myself :wink:"
 
 

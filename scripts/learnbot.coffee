@@ -11,9 +11,9 @@
 module.exports = (robot) ->
    
    adminRooms = ['G262PSWTT']
-   strictRooms = ['C3SR3DRMM', 'C3RNH5LKD', 'G3U4C75SQ','C41PCG9F1']
-   randomRooms = ['C3RSKA005', 'G3U4C75SQ','C41PCG9F1','C62RRUBB4','C65BCNMB3']
-   testRooms = ['G658U2NTF']
+   strictRooms = ['C65BCNMB3', 'G658U2NTF']
+   randomRooms = ['G658U2NTF', 'C65BCNMB3']
+   testRooms = ['G658U2NTF', 'C65BCNMB3']
    myName = robot.name
    lolReplies = ['lol', 'rofl', 'lmao', 'haha']
    beginGreetings = ['Hello','Hi there','Yo!','Sup?','Hey!']

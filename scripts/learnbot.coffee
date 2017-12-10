@@ -40,17 +40,6 @@ module.exports = (robot) ->
     if res.message.room in testRooms
      res.reply "#{res.random beginGreetings} My name is #{myName}. Nice to meet you!"
 
-   robot.hear /(undefined|reference) error/i, (res) ->
-    if res.message.room in javaRooms
-     respondMessage = "Sometimes, when you get an `#{res.match[1]} error`, it's because you have a syntax error in your code. Try pasting your code into Chrome Console or another JS debugger and see if you can find the syntax error there. Some people find it helpful to use comments to block out functions so they can use process of elimination to identify where the error is."
-     if replyTo is ''
-      res.reply respondMessage
-     else
-      respondMessage = "#{res.random beginGreetings} #{replyTo}! #{respondMessage}"
-      replyTo = ''
-      res.send respondMessage   
-
-
    robot.respond /what (?:channel|room) (?:are we|am i) in/i, (res) ->
     userName = res.message.user.name
     curRoom = res.message.user.room
@@ -100,13 +89,7 @@ module.exports = (robot) ->
     robot.respond /(?:version .*(?:running|on))|about/gi, (res) ->
      if res.message.room in randomRooms
        res.reply "I am on Geekbot Version 0.0.1"
-
-   robot.respond /(?:.*) kudos*/i, (res) ->
-    res.send "LabtechGeek does not currenlty have a kudod system :slightly_frowning_face:. Go bug @martynkeigher to make one! :party_gandalf:"
  
-   robot.respond /(?:.*) code snippet/i, (res) ->
-    res.reply "Uploading a code snippet is easy! Use the `+` next to the chat box in slack, and choose *'Code Snippet'* , on the top right make sure you choose the appropriate language for color formatting :slightly_smiling_face: \n\n *Note:* While not strictly related to code-snippets, you can drag and drop any file -if its code then it will be displayed as a snippet in the automatically detected language. Pictures, Documents, Applications can all be shared that way as well."
-
    robot.hear /(?:(?:hello|hi|hey|whats up) geekbot)|(?:geekbot (?:hello|hi|hey|whats up))/i, (res) ->
      res.reply res.random enterReplies
 
